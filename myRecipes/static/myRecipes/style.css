@@ -1,0 +1,18 @@
+#id_recipeName { width:500px;}
+#id_description, #id_originalReference { width: 80%; height:50px; }
+#id_servings { width: 50px; }
+body {
+    padding-top: 75px;
+    background-image: url("images/Enchiladas_suizas.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.white {color:white;
+    }
+
+.links, .mainlinks {font-weight: normal;
+    font-size: large;
+    text-underline-style: single;
+    color: aqua;
+    text-decoration: underline;
+}

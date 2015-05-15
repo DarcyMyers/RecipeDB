@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+        <head>
+                <title>
+                        {% block title %}{% endblock %}
+                </title>
+                {% load staticfiles %}
+                <link rel="icon" href="{{ STATIC_URL }}/favicon.ico" type="image/x-icon">
+                <link rel="stylesheet" type="text/css" href="{% static 'myRecipes/style.css' %}" />
+
+                {% load bootstrap3 %}
+                {% bootstrap_css %}
+                {% bootstrap_javascript %}
+                {% load bootstrap_themes %}
+                {% bootstrap_styles theme='lumen' type='min.css' %}
+                {% bootstrap_script use_min=True %}
+
+        <!-- jquery and jqueryUI google cdn links -->
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+        <script>$(document).ready(function(){
+                    $(function() {
+                        // the jqueryUI accordion method
+                        $( "#accordionForm" ).accordion(
+                            // the heightStyle option with the "content" parameter causes each tab to be the height of its content
+                            { heightStyle: "content" }
+                        );
+                    });
+
+                    $(function() {
+                        $("#id_dateFirstPrepared").datepicker()
+                    });
+            });
+        </script>
+
+                <style>
+                    #id_recipeName { width:500px;}
+                    #id_description, #id_originalReference { width: 80%; height:50px; }
+                    #id_servings { width: 50px; }
+                    body {
+                          padding-top: 50px;
+                        }
+                </style>
+        </head>
+        <body>
+          <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                  <div class="container">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand" href="/recipes/"><strong>Recipe List</strong></a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                          <ul class="nav navbar-nav">
+
+                                <li><a href={% url 'addrecipe' %}><strong>Add Recipe</strong></a></li>
+                                <!-- <li><a href="  % url 'helpinfo' %  "><strong>Help</strong></a></li> -->
+                                <li><a href={% url 'admin:index' %}>Admin</a></li>
+                          </ul>
+                        </div><!--/.nav-collapse -->
+                  </div>
+                </div>
+                <div class="container">
+                        {% block maincontent %}
+                        {% endblock %}
+                </div><!-- /.container -->
+
+        </body>
+</html>

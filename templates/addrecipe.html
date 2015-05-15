@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}
+Add Recipe
+{% endblock %}
+{% load bootstrap3 %}
+
+{% load staticfiles %}
+
+{% block maincontent %}
+<h2 class="white">Add a New Recipe</h2>
+
+
+<form action=" " method="post" role="form">
+{% csrf_token %}
+
+    <h3 class="white">Recipe Name:&nbsp;&nbsp; {{ recipeform.recipeName }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+    <hr>
+
+    <div id="accordionForm">
+        <h3>Recipe Info</h3>
+        <div>
+                <p>Servings:&nbsp;&nbsp; {{ recipeform.servings }}&nbsp;&nbsp;&nbsp;&nbsp;
+                    Vegetarian?&nbsp;&nbsp; {{ recipeform.vegetarian }}&nbsp;&nbsp;&nbsp;&nbsp;
+                    *Nacho* Index:&nbsp;&nbsp; {{ recipeform.NachoIndex }}</p><br />
+                <p>Prep Time (minutes):&nbsp;&nbsp; {{ recipeform.prepTimeMinutes }}&nbsp;&nbsp;&nbsp;&nbsp;
+                    Cook Time (minutes):&nbsp;&nbsp; {{ recipeform.cookTimeMinutes }} </p><br />
+                <p>Brief Description:&nbsp;&nbsp; {{ recipeform.description }} </p>
+        </div>
+
+        <h3>Recipe Ingredients</h3>
+        <div>
+            <ul>
+                <li></li>
+
+            </ul>
+        </div>
+
+
+        <h3>Recipe Instructions</h3>
+        <div>
+            <p>Recipe Instructions:&nbsp;&nbsp; {{ recipeform.instructions }} </p>
+        </div>
+
+
+       <h3>Recipe Info</h3>
+        <div>
+            <p>Date First Prepared: &nbsp;&nbsp; {{ recipeform.dateFirstPrepared }}</p><br />
+            <p>Reference: &nbsp;&nbsp; {{ recipeform.originalReference }}</p><br />
+            <p>Image: &nbsp;&nbsp; {{ recipeform.image }}</p>
+        </div>
+    </div><br />
+
+{% buttons %}
+    <button type="submit" class="btn btn-primary">
+        Save Recipe
+    </button>
+{% endbuttons %}
+
+</form>
+
+
+{% endblock %}

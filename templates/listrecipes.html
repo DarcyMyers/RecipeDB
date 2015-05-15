@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+Recipe Index: All Recipes
+{% endblock %}
+
+
+{% block maincontent %}
+
+{% load staticfiles %}
+<h1 class="white">Recipes</h1>
+                {% if recipelist %}
+                        <ul>
+                        {% for recipe in recipelist %}
+                        <li><a class="links" href="recipe/{{ recipe.id }}/">{{ recipe.recipeName }}</a></li>
+                            
+                {% endfor %}
+                        </ul>
+                {% else %}
+                        <p>You haven't added any recipes yet!</p>
+                {% endif %}
+                <p>
+                <a class="mainlinks" href="recipe/new/">Add Another Recipe</a>
+                </p>
+
+<hr>
+<br/>
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<hr>
+
+    <p class="mainlinks" >Good Idea</p>
+    <!--
+    <form method="get" action="search/">
+         <button type="submit" class="btn btn-primary"><strong>Search Recipes</strong></button>
+    </form>
+    -->
+<!-- <footer>Image Refernce: "Steve Dunham (Flickr: Enchiladas Suizas) [CC BY 2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons"
+</footer> -->
+
+{% endblock %}

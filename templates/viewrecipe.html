@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+{{ assaykit.assayName }}
+{% endblock %}
+{% block maincontent %}
+<h2>{{ recipe.recipeName }}</h2>
+
+    <p>&nbsp;</p>
+
+    <table>
+        <tr>
+            <th><strong>:&nbsp;&nbsp;</strong></th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th><strong>:&nbsp;&nbsp;</strong></th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th><strong>:&nbsp;&nbsp;</strong></th>
+        </tr>
+        <tr>
+            <td>{{ recipe.servings }}</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>{{ recipe.servings }}</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>{{ recipe.servings }}</td>
+        </tr>
+    </table>
+
+    <p>&nbsp;</p>
+
+    <hr>
+            <strong>Ingredients: </strong>
+            <ul>
+            {% for ingredient in recipe.igredients.all %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+            </ul>
+
+    <hr>
+
+
+
+{% endblock %}
