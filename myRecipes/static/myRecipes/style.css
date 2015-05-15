@@ -15,4 +15,7 @@ body {
     text-underline-style: single;
     color: aqua;
     text-decoration: underline;
+    list-style-type: none;
+
 }
+

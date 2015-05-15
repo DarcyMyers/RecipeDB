@@ -13,7 +13,7 @@ Add Recipe
 <form action=" " method="post" role="form">
 {% csrf_token %}
 
-    <h3 class="white">Recipe Name:&nbsp;&nbsp; {{ recipeform.recipeName }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+    <h3><span class="white"> Recipe Name:&nbsp;&nbsp;</span>  {{ recipeform.recipeName }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
     <hr>
 
     <div id="accordionForm">
@@ -30,8 +30,12 @@ Add Recipe
         <h3>Recipe Ingredients</h3>
         <div>
             <ul>
-                <li></li>
-
+                {{ ingredientListFormSet.management_form }}
+                    {% for ingredient in ingredientListFormSet %}
+                        {% for field in ingredient %}
+                            <li>{{ field.label_tag }} {{ field }}</li>
+                        {% endfor %}
+                    {% endfor %}
             </ul>
         </div>
 
@@ -39,6 +43,7 @@ Add Recipe
         <h3>Recipe Instructions</h3>
         <div>
             <p>Recipe Instructions:&nbsp;&nbsp; {{ recipeform.instructions }} </p>
+
         </div>
 
 

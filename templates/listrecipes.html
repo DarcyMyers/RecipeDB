@@ -9,7 +9,7 @@ Recipe Index: All Recipes
 {% load staticfiles %}
 <h1 class="white">Recipes</h1>
                 {% if recipelist %}
-                        <ul>
+                        <ul class="links">
                         {% for recipe in recipelist %}
                         <li><a class="links" href="recipe/{{ recipe.id }}/">{{ recipe.recipeName }}</a></li>
                             
@@ -27,7 +27,7 @@ Recipe Index: All Recipes
   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <hr>
 
-    <p class="mainlinks" >Good Idea</p>
+
     <!--
     <form method="get" action="search/">
          <button type="submit" class="btn btn-primary"><strong>Search Recipes</strong></button>
