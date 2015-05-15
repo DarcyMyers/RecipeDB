@@ -37,9 +37,9 @@ class Ingredient(models.Model):
 
 class RecipeIngredientInfo(models.Model):
 
-    def __str__(self):
-        string = str(self.ingredientAmount) + ' ' + self.ingredientUnit + ' ' + str(self.ingredient) + ' ' + self.ingredientType
-        return string
+    #def __str__(self):
+        #string = str(self.ingredientAmount) + ' ' + self.ingredientUnit + ' ' + str(self.ingredient) + ' ' + self.ingredientType
+        #return string
 
     recipe = models.ManyToManyField(Recipe, related_name='ingredients')
     ingredient = models.ManyToManyField(Ingredient)

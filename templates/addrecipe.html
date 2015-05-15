@@ -30,8 +30,8 @@ Add Recipe
         <h3>Recipe Ingredients</h3>
         <div>
             <ul>
-                {{ ingredientListFormSet.management_form }}
-                    {% for ingredient in ingredientListFormSet %}
+                {{ ingredientsformset.management_form }}
+                    {% for ingredient in ingredientsformset %}
                         {% for field in ingredient %}
                             <li>{{ field.label_tag }} {{ field }}</li>
                         {% endfor %}

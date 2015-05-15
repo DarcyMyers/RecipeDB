@@ -8,6 +8,7 @@ body {
     background-repeat: no-repeat;
 }
 .white {color:white;
+    text-shadow: 1px 1px 1px black;
     }
 
 .links, .mainlinks {font-weight: normal;
@@ -15,6 +16,7 @@ body {
     text-underline-style: single;
     color: aqua;
     text-decoration: underline;
+    text-shadow: 1px 1px 1px black;
     list-style-type: none;
 
 }

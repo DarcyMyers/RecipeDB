@@ -27,20 +27,21 @@ def add_recipe(request):
     # A form that can be used to add a new recipe.
     # Save data submitted through the form to the database as a new recipe
 
-    ingredientListFormSet = modelformset_factory(RecipeIngredientInfo, fields=('recipe',
+    ingredientsformset = modelformset_factory(RecipeIngredientInfo, fields=('recipe',
                                                                                      'ingredient',
                                                                                      'ingredientAmount',
                                                                                      'ingredientUnit',
                                                                                      'ingredientType'))
 
     if request.method == 'POST':
-        ingredientListFormSet(request.POST, request.FILES)
-        if ingredientListFormSet.is_valid():
-            instances = ingredientListFormSet.save(commit=False)
+        ingredientsformset = ingredientsformset(request.POST, request.FILES)
+        if ingredientsformset.is_valid():
+            instances = ingredientsformset.save(commit=False)
             for instance in instances:
                 instance.save()
-                ingredientListFormSet.save_m2m()
-
+                ingredientsformset.save_m2m()
+        else:
+            ingredientsformset = ingredientsformset()
 
     recipeform = RecipeForm(request.POST or None)
     if recipeform.is_valid():
@@ -49,6 +50,6 @@ def add_recipe(request):
         recipeform.save_m2m()
         return redirect(list_recipes)
 
-    context = {'recipeform': recipeform, 'ingredientListFormSet': ingredientListFormSet,}
+    context = {'recipeform': recipeform, 'ingredientsformset': ingredientsformset,}
     return render(request, 'addrecipe.html', context)
     #return render_to_response('addrecipe.html', context)
