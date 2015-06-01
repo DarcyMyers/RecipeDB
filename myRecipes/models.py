@@ -1,4 +1,11 @@
+# standard library imports
+## none
+# Core Django imports
 from django.db import models
+# Third-party imports
+## none
+# Project-specific imports
+## none
 
 
 class Recipe(models.Model):
@@ -21,7 +28,7 @@ class Recipe(models.Model):
     NachoIndex = models.CharField(max_length=5, choices=NACHO_INDEX_CHOICES, null=True, verbose_name='*Nacho* Index')
     image = models.ImageField(blank=True, null=True)
 
-    pass
+
 
 
 class Ingredient(models.Model):
@@ -29,8 +36,23 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.ingredientName
 
-    ingredientName = models.TextField(null=True, verbose_name='Ingredient')
+    ingredientName = models.CharField(max_length=20, null=True, verbose_name='Ingredient')
     ingredientNutritionContent = models.CharField(max_length=128, blank=True, null=True, verbose_name='Nutritional Content (Ingredient)') #allow super-long names
+
+    class Meta:
+        ordering = ('ingredientName',)
+    pass
+
+
+class MeasurementUnit(models.Model):
+
+    def __str__(self):
+        return self.unitName
+
+    unitName = models.TextField(max_length=15, null=True, verbose_name='Unit')
+
+    class Meta:
+        ordering = ('unitName',)
 
     pass
 
@@ -41,10 +63,10 @@ class RecipeIngredientInfo(models.Model):
         #string = str(self.ingredientAmount) + ' ' + self.ingredientUnit + ' ' + str(self.ingredient) + ' ' + self.ingredientType
         #return string
 
-    recipe = models.ManyToManyField(Recipe, related_name='ingredients')
-    ingredient = models.ManyToManyField(Ingredient)
-    ingredientAmount = models.FloatField(verbose_name='Amount')
-    ingredientUnit = models.CharField(max_length=10, null=True, verbose_name='Unit')
-    ingredientType = models.CharField(max_length=10, null=True, blank=True, verbose_name='Type')
+    recipe = models.ForeignKey(Recipe)
+    ingredient = models.ForeignKey(Ingredient)
+    ingredientAmount = models.FloatField(verbose_name='Amount', null=True, blank=True)
+    ingredientUnit = models.ForeignKey(MeasurementUnit)
+    ingredientType = models.CharField(max_length=20, null=True, blank=True, verbose_name='Type')
 
-
+    pass

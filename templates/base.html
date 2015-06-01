@@ -5,8 +5,9 @@
                         {% block title %}{% endblock %}
                 </title>
                 {% load staticfiles %}
-                <link rel="icon" href="{{ STATIC_URL }}/favicon.ico" type="image/x-icon">
+                <link rel="icon" href="{{ STATIC_URL }}/favicon.ico" type="image/x-icon" />
                 <link rel="stylesheet" type="text/css" href="{% static 'myRecipes/style.css' %}" />
+                <script src="{% static 'myRecipes/scripts.js' %}"></script>
 
                 {% load bootstrap3 %}
                 {% bootstrap_css %}
@@ -20,7 +21,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-        <script>$(document).ready(function(){
+            <script>$(document).ready(function(){
                     $(function() {
                         // the jqueryUI accordion method
                         $( "#accordionForm" ).accordion(
@@ -32,19 +33,22 @@
                     $(function() {
                         $("#id_dateFirstPrepared").datepicker()
                     });
+
             });
         </script>
 
+<!--
                 <style>
                     #id_recipeName { width:500px;}
                     #id_description, #id_originalReference { width: 80%; height:50px; }
                     #id_servings { width: 50px; }
                     body {
                           padding-top: 50px;
-                        }
-.ui-accordion-content-active
+                        } -->
+<style>
+            .ui-accordion-content-active
 {
-    padding: 10px !important;
+    padding: 10px;
     font-weight: bolder;
     bacground-color: white;
     background:rgba(255,255,255,0.5);

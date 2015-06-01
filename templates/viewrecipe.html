@@ -7,35 +7,59 @@
 
     <p>&nbsp;</p>
 
-    <table>
-        <tr>
-            <th><strong>:&nbsp;&nbsp;</strong></th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th><strong>:&nbsp;&nbsp;</strong></th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th><strong>:&nbsp;&nbsp;</strong></th>
-        </tr>
-        <tr>
-            <td>{{ recipe.servings }}</td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>{{ recipe.servings }}</td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>{{ recipe.servings }}</td>
-        </tr>
-    </table>
+    <div id="accordionForm">
+        <h3>Recipe Info</h3>
+        <div>
+                <p>Servings:&nbsp;&nbsp; <span class="numberSpinner">{{ recipe.servings }}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    Vegetarian?&nbsp;&nbsp; {{ recipe.vegetarian }}&nbsp;&nbsp;&nbsp;&nbsp;</p><br />
+                    <p>*Nacho* Index:&nbsp;&nbsp; {{ recipe.NachoIndex }}</p><br />
+                <p>Prep Time (minutes):&nbsp;&nbsp; <span class="numberSpinner">{{ recipe.prepTimeMinutes }}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    Cook Time (minutes):&nbsp;&nbsp; <span class="numberSpinner">{{ recipe.cookTimeMinutes }}</span> </p><br />
+                <p>Brief Description:&nbsp;&nbsp; {{ recipe.description }} </p>
+        </div>
+
+        <h3>Recipe Ingredients</h3>
+        <div>
+            <table class="table">
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Amount</th>
+                    <th>Unit</th>
+                    <th>Type</th>
+                </tr>
+
+                {% for ingredient in ingredients %}
+                <tr>
+                    <td>{{ ingredient.ingredient }}</td>
+                    <td>{{ ingredient.ingredientAmount }}</td>
+                    <td>{{ ingredient.ingredientUnit }}</td>
+                    <td>{{ ingredient.ingredientType }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+
+
+        <h3>Recipe Instructions</h3>
+        <div>
+            <p>Recipe Instructions:&nbsp;&nbsp; {{ recipe.instructions }} </p>
+
+        </div>
+
+
+       <h3>Recipe Info</h3>
+        <div>
+            <p>Date First Prepared: &nbsp;&nbsp; {{ recipe.dateFirstPrepared }}</p><br />
+            <p>Reference: &nbsp;&nbsp; {{ recipe.originalReference }}</p><br />
+        </div>
+    </div><br />
 
     <p>&nbsp;</p>
 
-    <hr>
-            <strong>Ingredients: </strong>
-            <ul>
-            {% for ingredient in recipe.igredients.all %}
-                <li>{{ ingredient }}</li>
-            {% endfor %}
-            </ul>
 
     <hr>
 
-
+        <a class="links" href="edit/">Edit Recipe</a>
 
 {% endblock %}

@@ -9,4 +9,9 @@ $(document).ready(function(){
             { heightStyle: "content" }
         );
     });
+    // datepicker
+    $(function() {
+        $("#id_dateFirstPrepared").datepicker()
+    });
+
 });

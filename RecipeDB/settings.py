@@ -38,11 +38,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myRecipes',
+    'myRecipes',  # my app
 
-
-    'bootstrap3', #pip install django-bootstrap3
-    'bootstrap_themes', #pip install django-bootstrap-themes
+    'django_extensions',  # pip install django-extensions
+    'bootstrap3',  # pip install django-bootstrap3
+    'bootstrap_themes',  # pip install django-bootstrap-themes
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,6 +87,10 @@ DATABASES = {
     }
 }
 
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

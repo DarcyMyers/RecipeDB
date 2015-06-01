@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', views.list_recipes, name = 'recipelist'),
     url(r'^recipe/(?P<recipe_id>\d+)/$', views.view_recipe, name='viewrecipe'),
     url(r'^recipe/new/$', views.add_recipe, name='addrecipe'),
+    url(r'^recipe/(?P<recipe_id>\d+)/edit/$', views.edit_recipe, name='editrecipe'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

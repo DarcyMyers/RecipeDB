@@ -13,6 +13,7 @@ Add Recipe
 <form action=" " method="post" role="form">
 {% csrf_token %}
 
+
     <h3><span class="white"> Recipe Name:&nbsp;&nbsp;</span>  {{ recipeform.recipeName }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
     <hr>
 
@@ -29,24 +30,30 @@ Add Recipe
 
         <h3>Recipe Ingredients</h3>
         <div>
-            {{ ingredientsformset.management_form }}
-            <table>
-                <tr>
-                    <th>Ingredient</th>
-                    <th>Amount</th>
-                    <th>Unit</th>
-                    <th>Type</th>
-                </tr>
+                {{ ingredientsformset.management_form }}
+                        <table>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Amount</th>
+                                <th>Unit</th>
+                                <th>Type</th>
+                            </tr>
 
-                {% for ingredient in ingredientsformset %}
-                <tr>
-                    <td>{{ ingredient.ingredient }}</td>
-                    <td>{{ ingredient.ingredientAmount }}</td>
-                    <td>{{ ingredient.ingredientUnit }}</td>
-                    <td>{{ ingredient.ingredientType }}</td>
-                </tr>
-                {% endfor %}
-            </table>
+                            {% for ingredient in ingredientsformset %}
+                               {{ ingredient.id.as_hidden }}
+
+
+                            <tr>
+
+                                <td>{{ ingredient.ingredient }}</td>
+                                <td>{{ ingredient.ingredientAmount }}</td>
+                                <td>{{ ingredient.ingredientUnit }}</td>
+                                <td>{{ ingredient.ingredientType }}</td>
+                            </tr>
+
+                            {% endfor %}
+                        </table>
+
 
         </div>
 
@@ -62,6 +69,7 @@ Add Recipe
         <div>
             <p>Date First Prepared: &nbsp;&nbsp; {{ recipeform.dateFirstPrepared }}</p><br />
             <p>Reference: &nbsp;&nbsp; {{ recipeform.originalReference }}</p><br />
+            <p>Image: &nbsp;&nbsp; {{ recipeform.image }}</p>
         </div>
     </div><br />
 
@@ -72,5 +80,14 @@ Add Recipe
 {% endbuttons %}
 
 </form>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+
+{% endif %}
 
 {% endblock %}

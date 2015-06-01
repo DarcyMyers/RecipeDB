@@ -1,8 +1,25 @@
-from django.forms import ModelForm, BaseModelFormSet
-from .models import Recipe, RecipeIngredientInfo, Ingredient
+from django.forms import ModelForm, Select, TextInput
+from django.forms.models import inlineformset_factory
+from .models import Recipe, RecipeIngredientInfo
+
+
+IngredientsFormset = inlineformset_factory(Recipe, RecipeIngredientInfo, fk_name='recipe', fields= [
+                #'recipe',
+                #'id',
+                'ingredient',
+                'ingredientAmount',
+                'ingredientUnit',
+                'ingredientType'],
+        widgets={
+                #'recipe': None,
+                #'id':None,
+                'ingredient': Select,
+                'ingredientAmount': None,
+                'ingredientUnit': Select,
+                'ingredientType': TextInput}, extra=10,)
+
 
 class RecipeForm(ModelForm):
-
     class Meta:
         model = Recipe
         fields = ['recipeName',
@@ -16,14 +33,11 @@ class RecipeForm(ModelForm):
                   'prepTimeMinutes',
                   'cookTimeMinutes',
                   'originalReference',
-                  'NachoIndex']
-
-    def __init__(self, *args, **kwargs):
-        super(RecipeForm, self).__init__(*args, **kwargs)
-        #self.fields["ingredients"].queryset = Ingredient.objects.all()
+                  'NachoIndex',
+                  ]
 
 
-class BaseRecipeIngredientInfoFormSet(BaseModelFormSet):
-    def __init__(self, *args, **kwargs):
-        super(BaseRecipeIngredientInfoFormSet, self).__init__(*args, **kwargs)
-        self.queryset = RecipeIngredientInfo.objects.all()
+
+
+## todo: lookinto the below blogpost to see if applicable to 'nested formset approach'
+#reference: http://whoisnicoleharris.com/2015/01/06/implementing-django-formsets.html
