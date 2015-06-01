@@ -11,3 +11,6 @@ This is a basic Django project (Django 1.8), that I created to keep my Django sk
 - inline addition of new ingredients when adding or editing a recipe
 - recipe image upload
 
+
+[![Analytics](https://ga-beacon.appspot.com/UA-63613233-3/RecipeDB/readme)](https://github.com/igrigorik/ga-beacon)
+
